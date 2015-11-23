@@ -14,7 +14,6 @@ Purpose:		To simulate a person performing a bungee
 			jump using Euler's method.
 *********************************************************************/
 #include <iostream>
-#include <stdlib.h>
 #include <conio.h>
 #include <time.h>
 #include <windows.h>
@@ -43,7 +42,6 @@ using namespace std;
 
 void start();
 void clear();
-clock_t curr_time;
 
 int main(void){
 
@@ -76,7 +74,8 @@ void start(){
 	double prev_speed = 0.0;
 	double height = 400.0;
 	double time_elapsed = 0.0;
-	long long int prev_time = 0;
+	long	 prev_time = 0;
+	clock_t curr_time;
 	
 	while (1){
 		curr_time = clock();
