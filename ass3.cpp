@@ -47,7 +47,7 @@ clock_t curr_time;
 
 int main(void){
 
-	int user_select; 
+	char user_select; 
 	
 	while (1){
 		clear();
@@ -57,17 +57,14 @@ int main(void){
 		fflush(stdin);
 		cin >> user_select;
 		switch (user_select){
-		case 1:
-			cout << "Who is ready to jump?" << endl;
-			for (unsigned int i = 3; i > 0; i--){
-				cout << i << "... ";
-				Sleep(1000);
-			}
+		case '1':
 			clear();
 			start();
 			break;
-		case 2:
+		case '2':
 			return 0;
+		default:
+			break;
 		}
 	}
 }
@@ -78,7 +75,7 @@ void start(){
 	double speed = 0.0;
 	double prev_speed = 0.0;
 	double height = 400.0;
-	double time_elapsed;
+	double time_elapsed = 0.0;
 	long long int prev_time = 0;
 	
 	while (1){
@@ -113,22 +110,23 @@ void start(){
 		if (speed > SAFE_SPD_TH && height <= FLOOR_TH){
 			cout << "Let the bodies hit the floor." << endl << 
 				"Press any key to continue" << endl;
-			_getch();
 			fflush(stdin);
+			_getch();
+
 			return;
 		}
 		if (speed < SAFE_SPD_TH && height < SAFE_HEIGHT){
 			cout << "You can get off now!" << endl << 
 				"Press any key to continue"<< endl;
-			_getch();
 			fflush(stdin);
+			_getch();
 			return;
 		}
 		if (speed == 0.0 && (int) height == 155){
 			cout << "How's it hangin? Just... hang on we'll get you out of there." << endl << 
 				"Press any key to continue" << endl;
-			_getch();
 			fflush(stdin);
+			_getch();
 			return;
 		}
 		clear();
