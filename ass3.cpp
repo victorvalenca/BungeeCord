@@ -74,11 +74,11 @@ void start(){
 	double prev_speed = 0.0;
 	double height = 400.0;
 	double time_elapsed = 0.0;
-	long	 prev_time = 0;
-	clock_t curr_time;
-	
+	clock_t curr_time, prev_time = 0;
+	clock_t base_time = clock();
+
 	while (1){
-		curr_time = clock();
+		curr_time = clock() - base_time;
 		time_elapsed = ((double)(curr_time - prev_time)) / CLOCKS_PER_SEC;
 
 		accel = 9.8 - drag / 68 * (speed + 8.0 * pow(speed / 46, 2)) - 0.04 * (400 - height);
